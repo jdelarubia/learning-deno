@@ -1,0 +1,13 @@
+{
+    "albums": [
+        {
+            "name": "Back in Black",
+            "band": "AC/DC",
+            "sold": "22M"
+        },
+        { "name": "Metallica", "band": "Metallica", "sold": "16M" },
+        { "name": "Slippery when Wet", "band": "Bon Jovi", "sold": "12M" },
+        { "name": "Hybrid Theory", "band": "Linkin Park", "sold": "11M" },
+        { "name": "1984", "band": "Van Halen", "sold": "10M" }
+    ]
+}
