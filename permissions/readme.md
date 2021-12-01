@@ -2,6 +2,8 @@
 
 Run some simple commands and prints information on the console.
 
+-   [code](./permission.ts)
+
 ## Notes
 
 -   Permissions are set to `prompt` by default.

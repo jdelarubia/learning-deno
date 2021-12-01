@@ -4,8 +4,8 @@ Set of little tests with [Deno](https://deno.land/).
 
 ## Links to Code Examples
 
--   [Permissions API](./permissions/permission.ts)
--   [Web API](./web/web.ts)
+-   [Permissions API](./permissions/readme.md)
+-   [Web API](./web/readme.md)
 
 ## Running the examples
 
