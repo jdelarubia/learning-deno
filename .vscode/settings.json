@@ -1,0 +1,6 @@
+{
+    "deno.enable": true,
+    "deno.path": "c:\\deno\\deno.exe",
+    "deno.lint": true,
+    "deno.internalDebug": true
+}
