@@ -1,0 +1,25 @@
+@HOSTNAME = 127.0.0.1
+@PORT = 8080
+
+POST {{HOSTNAME}}:{{PORT}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "band": "Hypocrisis",
+    "album": "Workship"
+}
+
+### 
+
+GET http://{{HOSTNAME}}:{{PORT}}/albums/
+    ?band=Hypocrisis
+    &album=Workship 
+Content-Type: text/plain
+Accept-Charset: UTF-8
+###
+
+GET http://{{HOSTNAME}}:{{PORT}}/
+    ?band=Hypocrisis
+    &album=Workship 
+Content-Type: text/plain
+Accept-Charset: UTF-8
