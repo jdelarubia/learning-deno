@@ -7,6 +7,7 @@ Set of little tests with [Deno](https://deno.land/).
 - [Permissions API](./permission-api/readme.md)
 - [Web API](./web-platform-api/readme.md)
 - [HTTP Server API](./http-server-api/readme.md)
+- [Web Storage API](./web-storage-api/readme.md)
 
 ## Running the examples
 
