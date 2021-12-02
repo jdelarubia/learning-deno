@@ -1,6 +1,13 @@
 {
-    "deno.enable": true,
-    "deno.path": "c:\\deno\\deno.exe",
-    "deno.lint": true,
-    "deno.internalDebug": true
+  "deno.enable": true,
+  "deno.path": "c:\\deno\\deno.exe",
+  "deno.lint": true,
+  "deno.internalDebug": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true
 }
