@@ -17,3 +17,5 @@ Our worker reads a file and print its content on screen.
 - [Deno's official documentation](https://deno.land/manual@v1.16.3/runtime/workers)
 - [James L Milner article Easier Web Workers](https://www.jameslmilner.com/post/easier-web-workers/)
 - [JamesLMilner/web-worker-comparison web worker example](https://github.com/JamesLMilner/web-worker-comparison)
+- [MDN Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
+- [MDN Using Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
