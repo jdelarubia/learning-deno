@@ -9,6 +9,7 @@ Set of little tests with [Deno](https://deno.land/).
 - [HTTP Server API](./http-server-api/readme.md)
 - [Web Storage API](./web-storage-api/readme.md)
 - [Workers](./web-worker-api/readme.md)
+- [Web Workers example](./web-workers-example/readme.md)
 
 ## Running the examples
 
