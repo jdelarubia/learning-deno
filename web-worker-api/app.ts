@@ -2,9 +2,9 @@
  * This functionality requires --allow-read and --unstable flag enabled
  */
 
-function sampleWorkers() {
+function run() {
   const path = new URL("./worker.ts", import.meta.url);
-  const options: any = {
+  const workerOptions: any = {
     type: "module",
 
     // the following code, enables the Deno namespace in the worker scope
@@ -12,10 +12,10 @@ function sampleWorkers() {
       namespace: true,
     },
   };
-  const worker = new Worker(path.href, options);
+  const worker = new Worker(path.href, workerOptions);
   const filePath = "./web-worker-api/log.txt"; // name of the file to be read and printed
 
   worker.postMessage({ filename: filePath });
 } //.
 
-export { sampleWorkers };
+export { run as demoWorkers };
