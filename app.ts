@@ -1,11 +1,37 @@
-import { sampleWeb } from "./web-platform-api/web.ts";
-import { launchServer } from "./http-server-api/server.ts";
-import { samplePermissions } from "./permission-api/permission.ts";
-import { sampleStorage } from "./web-storage-api/storage.ts";
-import { sampleWorkers } from "./web-worker-api/workers.ts";
+/**
+ * app.ts
+ * Main application.
+ */
 
-await samplePermissions();
-await sampleWeb();
-await launchServer();
-await sampleStorage();
-sampleWorkers();
+import { permissionRepo } from "./shared/PermissionRepository.ts";
+import { demoPermissions } from "./permission-api/permission.ts";
+import { demoWebPlatform } from "./web-platform-api/app.ts";
+import { demoHttpServer } from "./http-server-api/app.ts";
+import { demoStorage } from "./web-storage-api/app.ts";
+import { demoWorkers } from "./web-worker-api/app.ts";
+import { demoSampleWorkers } from "./web-workers-example/app.ts";
+
+// Request all permissions needed to run our app
+async function askPermissions() {
+  const permissionDescriptors: any[] = [
+    { name: "read", path: "./web-platform-api/albums.json" },
+    { name: "read", path: "./web-worker-api/worker.ts" },
+    { name: "read", path: "./web-worker-api/log.txt" },
+    { name: "write", path: "./output.txt" },
+    { name: "net", host: "127.0.0.1:8080" },
+    { name: "net", host: "localhost:8080" },
+  ];
+  await permissionDescriptors.forEach((descriptor) => {
+    permissionRepo.request(descriptor);
+  });
+} //.
+
+// Run all the demos
+await askPermissions();
+await demoPermissions();
+await demoWebPlatform();
+// await demoHttpServer(); // blocks the execution running a web server
+await demoStorage();
+await demoWorkers();
+
+// await demoSampleWorkers(); // ongoing
