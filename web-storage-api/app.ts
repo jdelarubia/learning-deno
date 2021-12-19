@@ -1,3 +1,8 @@
+/**
+ * app.ts
+ * Test basic functionality of localStorage.
+ */
+
 import { heroRepository as repo } from "./heroRepository.ts";
 
 function initDB() {
@@ -26,7 +31,7 @@ function printAll() {
   }
 } //.
 
-function clearAll() {
+function clearDB() {
   console.log("Clearing our our repository");
   repo.clear();
 } //.
@@ -38,13 +43,13 @@ function removeCouchPotato() {
   repo.remove("couch potato");
 } //.
 
-function sampleStorage() {
+function demoStorage() {
   initDB();
   printLength();
   printAll();
   removeCouchPotato();
   printLength();
-  clearAll();
+  clearDB();
 } //.
 
-export { sampleStorage };
+export { demoStorage };
