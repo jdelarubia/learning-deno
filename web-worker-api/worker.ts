@@ -1,7 +1,11 @@
-// Simple Worker code example
+/**
+ * worker.ts
+ * Simple Worker code example.
+ */
 
+console.log();
 console.log("hello worker!");
-console.log("home directory", Deno.cwd()); // root of our project!
+// console.log("home directory", Deno.cwd()); // root of our project!
 
 self.addEventListener("message", async (ev: Event) => {
   const { filename } = (ev as any).data;
