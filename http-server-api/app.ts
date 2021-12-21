@@ -1,4 +1,3 @@
-// import { requestPermission } from "../permission-api/permission.ts";
 import { _Descriptor, permissionRepo } from "../shared/PermissionRepository.ts";
 
 // Settings
@@ -10,8 +9,8 @@ async function requestNetAccess(): Promise<boolean> {
     name: "net",
     host: `${HOST}:${PORT}`,
   } as const;
-  const status = await permissionRepo.query(descriptor);
-  return permissionRepo.isGranted(descriptor);
+  
+  return await permissionRepo.isGranted(descriptor);
 } //.
 
 // Info about HTTP Requests and Responses
@@ -20,7 +19,7 @@ async function run() {
   console.log("**************************************************");
   console.log("HTTP Server API Demo");
   console.log(
-    `If you grant NET permissions, the server will listen on http://${HOST}:${PORT}`
+    `If you grant NET permissions, the server will listen on http://${HOST}:${PORT}`,
   );
 
   if (await requestNetAccess()) {
