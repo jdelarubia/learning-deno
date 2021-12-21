@@ -19,7 +19,7 @@ async function logCurrentPermissions() {
   for (const descriptor in descriptors) {
     console.log(
       `${descriptor}: `,
-      await permissionRepo.query(descriptors[descriptor])
+      await permissionRepo.query(descriptors[descriptor]),
     );
   }
   console.log();
@@ -48,7 +48,7 @@ async function sampleRequestPermission() {
 async function sampleRevokePermission() {
   console.log("*** Revoking a permission ***");
   console.log(
-    "Try running this program with the flag --allow-net enabled to see it revoked"
+    "Try running this program with the flag --allow-net enabled to see it revoked",
   );
   const descriptor = { name: "net", host: "127.0.0.1" } as const;
 
