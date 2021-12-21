@@ -1,4 +1,4 @@
-import { permissionRepo, _Descriptor } from "../shared/PermissionRepository.ts";
+import { _Descriptor, permissionRepo } from "../shared/PermissionRepository.ts";
 
 const descriptors: { [index: string]: _Descriptor } = {
   read: { name: "read" },
@@ -63,9 +63,13 @@ async function sampleRevokePermission() {
  * Main functionality to run all our sample code.
  */
 async function run() {
+  console.log("**************************************************");
+  console.log("Permissions API Demo");
+
   await logCurrentPermissions();
   await sampleRequestPermission();
   await sampleRevokePermission();
+  console.log();
 } //.
 
 export { run as demoPermissions };
