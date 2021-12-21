@@ -8,7 +8,6 @@
  * if (await permissionHandler.isGranted()) {
  * // do something
  * }
- *
  */
 
 type _Descriptor = Deno.PermissionDescriptor;
