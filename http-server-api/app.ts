@@ -1,5 +1,5 @@
 // import { requestPermission } from "../permission-api/permission.ts";
-import { permissionRepo, _Descriptor } from "../shared/PermissionRepository.ts";
+import { _Descriptor, permissionRepo } from "../shared/PermissionRepository.ts";
 
 // Settings
 const PORT = 8080;
@@ -17,9 +17,12 @@ async function requestNetAccess(): Promise<boolean> {
 // Info about HTTP Requests and Responses
 // https://deno.land/manual@v1.16.3/runtime/http_server_apis
 async function run() {
+  console.log("**************************************************");
+  console.log("HTTP Server API Demo");
   console.log(
     `If you grant NET permissions, the server will listen on http://${HOST}:${PORT}`
   );
+
   if (await requestNetAccess()) {
     const options: Deno.ListenOptions = { port: PORT, hostname: HOST };
     const server: Deno.Listener = await Deno.listen(options);
@@ -28,6 +31,7 @@ async function run() {
       handle(conn);
     }
   }
+  console.log();
 } //.
 
 /**

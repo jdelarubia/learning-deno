@@ -44,12 +44,15 @@ function removeCouchPotato() {
 } //.
 
 function demoStorage() {
+  console.log();
+  console.log("localStorage Demo");
   initDB();
   printLength();
   printAll();
   removeCouchPotato();
   printLength();
   clearDB();
+  console.log();
 } //.
 
 export { demoStorage };

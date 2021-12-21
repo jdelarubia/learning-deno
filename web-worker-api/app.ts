@@ -3,6 +3,9 @@
  */
 
 function run() {
+  console.log("**************************************************");
+  console.log("Web Workers API Demo");
+
   const path = new URL("./worker.ts", import.meta.url);
   const workerOptions: any = {
     type: "module",
@@ -16,6 +19,7 @@ function run() {
   const filePath = "./web-worker-api/log.txt"; // name of the file to be read and printed
 
   worker.postMessage({ filename: filePath });
+  console.log();
 } //.
 
 export { run as demoWorkers };
