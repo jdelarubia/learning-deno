@@ -54,7 +54,7 @@ class PermissionRepository {
    * @returns Promise<boolean>
    */
   async isGranted(descriptor: _Descriptor): Promise<boolean> {
-    return (await (await this.request(descriptor)).state) === "granted";
+    return (await (await this.query(descriptor)).state) === "granted";
   } //.
 } //. PermissionHandler
 
