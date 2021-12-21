@@ -9,7 +9,7 @@ async function requestNetAccess(): Promise<boolean> {
     name: "net",
     host: `${HOST}:${PORT}`,
   } as const;
-  
+
   return await permissionRepo.isGranted(descriptor);
 } //.
 
