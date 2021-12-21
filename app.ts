@@ -13,7 +13,7 @@ import { demoSampleWorkers } from "./web-workers-example/app.ts";
 
 // Request all permissions needed to run our app
 async function askPermissions() {
-  const permissionDescriptors: any[] = [
+  const permissionDescriptors: Deno.PermissionDescriptor[] = [
     { name: "read", path: "./web-platform-api/albums.json" },
     { name: "read", path: "./web-worker-api/worker.ts" },
     { name: "read", path: "./web-worker-api/log.txt" },
