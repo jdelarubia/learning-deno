@@ -25,7 +25,7 @@ class SuperheroRepo {
   } //.
 
   remove(name: string) {
-    localStorage.removeItem(name.toString());
+    localStorage.removeItem(name.toString().toLowerCase());
   } //.
 
   clear() {
