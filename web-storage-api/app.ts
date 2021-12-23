@@ -11,16 +11,13 @@ function initDB() {
   fakeDB.forEach((hero) => repo.add(hero));
 } //.
 
-function printLength() {
-  console.log(`Our repository currently has ${repo.len()} elements.`);
-} //.
-
-function printAll() {
+function printAllHeroes() {
   console.log("All our heroes/villains");
   const all = repo.findAll();
   for (const hero in all) {
     console.log(all[hero]);
   }
+  console.log(`Our repository currently has ${repo.len()} elements.`);
 } //.
 
 function clearDB() {
@@ -29,20 +26,23 @@ function clearDB() {
 } //.
 
 function removeCouchPotato() {
-  console.log(
-    "We detected an outlier. Removing Mr.'Couch Potato' from our repo",
-  );
+  console.log("We detected an outlier. Removing Mr.'Couch Potato' from our DB");
   repo.remove("couch potato");
+} //.
+
+function removeHero(key: string) {
+  console.log(`removing ${key}`);
+  repo.remove(key);
 } //.
 
 function run() {
   console.log();
   console.log("localStorage Demo");
   initDB();
-  printLength();
-  printAll();
+  printAllHeroes();
   removeCouchPotato();
-  printLength();
+  removeHero("Godzilla");
+  printAllHeroes();
   clearDB();
   console.log();
 } //.
