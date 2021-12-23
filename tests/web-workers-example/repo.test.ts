@@ -1,11 +1,20 @@
+/**
+ * repo.test.ts
+ * Test functions in the repository.
+ */
+
 import {
   assert,
   assertEquals,
   assertNotEquals,
   assertExists,
 } from "https://deno.land/std@0.118.0/testing/asserts.ts";
-import { productRepo } from "../web-workers-example/repo.ts";
-import { _Product, _RepoIndex, _Specs } from "../web-workers-example/shared.ts";
+import { productRepo } from "../../web-workers-example/repo.ts";
+import {
+  _Product,
+  _RepoIndex,
+  _Specs,
+} from "../../web-workers-example/shared.ts";
 
 Deno.test({
   name: "len() return 0 before init()",
