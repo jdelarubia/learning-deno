@@ -1,4 +1,5 @@
 import {
+  assert,
   assertEquals,
   assertNotEquals,
   assertExists,
@@ -7,14 +8,14 @@ import { productRepo } from "../web-workers-example/repo.ts";
 import { _Product, _RepoIndex, _Specs } from "../web-workers-example/shared.ts";
 
 Deno.test({
-  name: "Set Up",
+  name: "len() return 0 before init()",
   fn: () => {
     assertEquals(productRepo.len(), 0, "Initial len() must return 0");
   },
 });
 
 Deno.test({
-  name: "Initializes repo with sample data",
+  name: "init() fills repo with test data",
   fn: () => {
     [
       { specs: { category: "TV", brand: "LG", price: 300 } },
@@ -34,7 +35,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "find() an id after init()",
+  name: "find(1) return an element after init()",
   fn: () => {
     const elem: _Specs = productRepo.find(1);
     assertExists(elem, "find() must return some value after init()");
@@ -42,7 +43,37 @@ Deno.test({
 });
 
 Deno.test({
-  name: "Add a new element",
+  name: "findAll() return len > 1 after init()",
+  fn: () => {
+    assert(
+      productRepo.findAll().length > 1,
+      "repository doesn't seem to be initialized"
+    );
+  },
+});
+
+Deno.test({
+  name: "findBy() return an array of elements",
+  fn: () => {
+    assert(
+      productRepo.findBy("category", "TV").length > 1,
+      "repository doesn't seem to be initialized"
+    );
+  },
+});
+
+Deno.test({
+  name: "findBy() return 0 elements",
+  fn: () => {
+    assert(
+      productRepo.findBy("something", "random").length === 0,
+      "non existing filter"
+    );
+  },
+});
+
+Deno.test({
+  name: "add() a new element increment repo length",
   fn: () => {
     productRepo.add({
       specs: { category: "tablet", brand: "Samsung", price: 150 },
@@ -54,8 +85,19 @@ Deno.test({
     );
   },
 });
+
 Deno.test({
-  name: "Tear down",
+  name: "remove() decrement repo length",
+  fn: () => {
+    const initLen: number = productRepo.len();
+    productRepo.remove(2);
+    const finalLen: number = productRepo.len();
+    assert(finalLen < initLen, "remove() doesn't seem to subtract repo len");
+  },
+});
+
+Deno.test({
+  name: "clear() set len() = 0",
   fn: () => {
     productRepo.clear();
     assertEquals(productRepo.len(), 0, "clear() must set len() to 0");
