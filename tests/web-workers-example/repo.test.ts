@@ -15,6 +15,7 @@ import {
   _RepoIndex,
   _Specs,
 } from "../../web-workers-example/shared.ts";
+import { fakeDB } from "../../web-workers-example/mocks.ts";
 
 Deno.test({
   name: "len() return 0 before init()",
@@ -26,14 +27,7 @@ Deno.test({
 Deno.test({
   name: "init() fills repo with test data",
   fn: () => {
-    [
-      { specs: { category: "TV", brand: "LG", price: 300 } },
-      { specs: { category: "TV", brand: "Samsung", price: 400 } },
-      { specs: { category: "TV", brand: "Sony", price: 500 } },
-      { specs: { category: "TV", brand: "Xiaomi", price: 300 } },
-      { specs: { category: "mobile", brand: "Samsung", price: 700 } },
-      { specs: { category: "mobile", brand: "Apple", price: 3000 } },
-    ].forEach((elem) => productRepo.add(elem));
+    fakeDB.forEach((elem) => productRepo.add(elem));
 
     assertNotEquals(
       productRepo.len(),
