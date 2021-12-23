@@ -1,7 +1,7 @@
 type SuperHero = { name: string; powers: string };
 
 class SuperheroRepo {
-  length(): number {
+  len(): number {
     return localStorage.length;
   } //.
 
@@ -10,22 +10,22 @@ class SuperheroRepo {
     localStorage.setItem(name.toLowerCase(), powers.toLowerCase());
   } //.
 
-  get(name: string): SuperHero {
+  find(name: string): SuperHero {
     return { name: name, powers: localStorage.getItem(name)! };
   } //.
 
-  getAll(): SuperHero[] {
-    const count = this.length();
+  findAll(): SuperHero[] {
+    const count = this.len();
     const all: SuperHero[] = [];
     for (let i = 0; i < count; i++) {
       const name = localStorage.key(i);
-      all.push(this.get(name!));
+      all.push(this.find(name!));
     }
     return all;
   } //.
 
   remove(name: string) {
-    localStorage.removeItem(name);
+    localStorage.removeItem(name.toString());
   } //.
 
   clear() {
