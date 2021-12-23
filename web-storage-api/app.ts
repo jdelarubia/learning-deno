@@ -38,12 +38,12 @@ function clearDB() {
 
 function removeCouchPotato() {
   console.log(
-    "We detected an outlier. Removing Mr.'Couch Potato' from our repo",
+    "We detected an outlier. Removing Mr.'Couch Potato' from our repo"
   );
   repo.remove("couch potato");
 } //.
 
-function demoStorage() {
+function run() {
   console.log();
   console.log("localStorage Demo");
   initDB();
@@ -55,4 +55,4 @@ function demoStorage() {
   console.log();
 } //.
 
-export { demoStorage };
+export { run as demoStorage };
