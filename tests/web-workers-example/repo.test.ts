@@ -6,8 +6,8 @@
 import {
   assert,
   assertEquals,
-  assertNotEquals,
   assertExists,
+  assertNotEquals,
 } from "https://deno.land/std@0.118.0/testing/asserts.ts";
 import { productRepo } from "../../web-workers-example/repo.ts";
 import {
@@ -32,7 +32,7 @@ Deno.test({
     assertNotEquals(
       productRepo.len(),
       0,
-      "len() must return a value greater than 0 after init"
+      "len() must return a value greater than 0 after init",
     );
   },
 });
@@ -50,7 +50,7 @@ Deno.test({
   fn: () => {
     assert(
       productRepo.findAll().length > 1,
-      "repository doesn't seem to be initialized"
+      "repository doesn't seem to be initialized",
     );
   },
 });
@@ -60,7 +60,7 @@ Deno.test({
   fn: () => {
     assert(
       productRepo.findBy("category", "TV").length > 1,
-      "repository doesn't seem to be initialized"
+      "repository doesn't seem to be initialized",
     );
   },
 });
@@ -70,7 +70,7 @@ Deno.test({
   fn: () => {
     assert(
       productRepo.findBy("something", "random").length === 0,
-      "non existing filter"
+      "non existing filter",
     );
   },
 });
@@ -84,7 +84,7 @@ Deno.test({
     assertNotEquals(
       productRepo.len(),
       0,
-      "len() must return a value greater than 0 after init"
+      "len() must return a value greater than 0 after init",
     );
   },
 });

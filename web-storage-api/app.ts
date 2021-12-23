@@ -30,7 +30,7 @@ function clearDB() {
 
 function removeCouchPotato() {
   console.log(
-    "We detected an outlier. Removing Mr.'Couch Potato' from our repo"
+    "We detected an outlier. Removing Mr.'Couch Potato' from our repo",
   );
   repo.remove("couch potato");
 } //.
