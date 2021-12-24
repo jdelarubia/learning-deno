@@ -5,7 +5,7 @@
 
 import { productRepo } from "./repo.ts";
 import { _Product, _Specs } from "./shared.ts";
-import { fakeDB } from "./mocks.ts";
+import { fakeDB } from "../tests/web-workers-example/mocks.ts";
 
 class CommandHandler {
   public exit = false;
