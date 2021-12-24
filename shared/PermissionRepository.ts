@@ -14,14 +14,17 @@ type _Descriptor = Deno.PermissionDescriptor;
 type _Status = Deno.PermissionStatus;
 
 class PermissionRepository {
+  private static instance: PermissionRepository;
+
   private descriptor: _Descriptor | null = null;
 
-  /**
-   * Setup a PermissionDescriptor.
-   * @param descriptor: Deno.PermissionDescriptor
-   */
-  constructor() {
-    // this.descriptor = descriptor as _Descriptor;
+  constructor() {} //.
+
+  public static getInstance(): PermissionRepository {
+    if (!PermissionRepository.instance) {
+      PermissionRepository.instance = new PermissionRepository();
+    }
+    return PermissionRepository.instance;
   } //.
 
   /**
@@ -57,7 +60,7 @@ class PermissionRepository {
   } //.
 } //. PermissionHandler
 
-const permissionRepo = new PermissionRepository();
+const permissionRepo = PermissionRepository.getInstance();
 
 export { permissionRepo };
 export type { _Descriptor, _Status };
