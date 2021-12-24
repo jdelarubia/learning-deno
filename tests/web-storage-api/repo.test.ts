@@ -10,7 +10,7 @@ import {
   assertNotEquals,
 } from "https://deno.land/std@0.118.0/testing/asserts.ts";
 import { heroRepository } from "../../web-storage-api/heroRepository.ts";
-import { fakeDB } from "../../web-storage-api/mocks.ts";
+import { fakeDB } from "./mocks.ts";
 
 Deno.test({
   name: "herorepo. len() return 0 before init()",
