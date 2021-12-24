@@ -4,7 +4,7 @@
  */
 
 import { heroRepository as repo } from "./heroRepository.ts";
-import { fakeDB } from "./mocks.ts";
+import { fakeDB } from "../tests/web-storage-api/mocks.ts";
 
 function initDB() {
   console.log("Initializing our repository");
