@@ -13,14 +13,14 @@ import { heroRepository } from "../../web-storage-api/heroRepository.ts";
 import { fakeDB } from "../../web-storage-api/mocks.ts";
 
 Deno.test({
-  name: "len() return 0 before init()",
+  name: "herorepo. len() return 0 before init()",
   fn: () => {
     assertEquals(heroRepository.len(), 0, "Initial len() must return 0");
   },
 });
 
 Deno.test({
-  name: "init() fills repo with test data",
+  name: "herorepo. init() fills repo with test data",
   fn: () => {
     fakeDB.forEach((elem) => heroRepository.add(elem));
 
@@ -33,7 +33,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "find(Godzilla) return an element after init()",
+  name: "herorepo. find(Godzilla) return an element after init()",
   fn: () => {
     const elem = heroRepository.find("Godzilla");
     assertExists(elem, "find() must return some value after init()");
@@ -41,7 +41,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "findAll() return len > 1 after init()",
+  name: "herorepo. findAll() return len > 1 after init()",
   fn: () => {
     assert(
       heroRepository.findAll().length > 1,
@@ -51,7 +51,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "add() a new element increment repo length",
+  name: "herorepo. add() a new element increment repo length",
   fn: () => {
     heroRepository.add({
       name: "Batman",
@@ -66,7 +66,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "remove() decrement repo length",
+  name: "herorepo. remove() decrement repo length",
   fn: () => {
     const initLen: number = heroRepository.len();
     heroRepository.remove("Godzilla");
@@ -76,7 +76,7 @@ Deno.test({
 });
 
 Deno.test({
-  name: "clear() set len() = 0",
+  name: "herorepo. clear() set len() = 0",
   fn: () => {
     heroRepository.clear();
     assertEquals(heroRepository.len(), 0, "clear() must set len() to 0");
