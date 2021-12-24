@@ -15,7 +15,7 @@ import {
   _RepoIndex,
   _Specs,
 } from "../../web-workers-example/shared.ts";
-import { fakeDB } from "../../web-workers-example/mocks.ts";
+import { fakeDB } from "./mocks.ts";
 
 Deno.test({
   name: "productrepo. len() return 0 before init()",
