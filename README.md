@@ -24,3 +24,4 @@ $ deno run --unstable app.ts
 
 - [DENO Testing](https://deno.land/manual@main/testing)
 - [How to write tests in Deno](https://dev.to/robdwaller/how-to-write-tests-in-deno-pen)
+- [Singleton in typeScript](https://refactoring.guru/design-patterns/singleton/typescript/example)
