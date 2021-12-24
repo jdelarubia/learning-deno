@@ -16,8 +16,6 @@ type _Status = Deno.PermissionStatus;
 class PermissionRepository {
   private static instance: PermissionRepository;
 
-  private descriptor: _Descriptor | null = null;
-
   constructor() {} //.
 
   public static getInstance(): PermissionRepository {
