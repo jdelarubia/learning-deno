@@ -3,12 +3,7 @@
  * Test functions in the repository.
  */
 
-import {
-  assert,
-  assertEquals,
-  assertExists,
-  assertNotEquals,
-} from "https://deno.land/std@0.118.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.118.0/testing/asserts.ts";
 import { permissionRepo } from "../../shared/PermissionRepository.ts";
 
 const readPermissionDescriptor: Deno.PermissionDescriptor = {
