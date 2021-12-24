@@ -3,7 +3,7 @@
  * Test functions in the repository.
  */
 
-import { assertEquals } from "https://deno.land/std@0.118.0/testing/asserts.ts";
+import { assertEquals } from "../deps.ts";
 import { permissionRepo } from "../../shared/PermissionRepository.ts";
 
 const readPermissionDescriptor: Deno.PermissionDescriptor = {
@@ -12,27 +12,25 @@ const readPermissionDescriptor: Deno.PermissionDescriptor = {
 };
 
 Deno.test({
-  name:
-    "permissionrepo. query() on a non --allow-read flagged file return prompt",
+  name: "permissionrepo. query() on a non --allow-read flagged file return prompt",
   fn: async () => {
     const p = await permissionRepo.query(readPermissionDescriptor);
     assertEquals(
       p.state,
       "prompt",
-      "query() non --allow-read flagged file should return prompt by default",
+      "query() non --allow-read flagged file should return prompt by default"
     );
   },
 });
 
 Deno.test({
-  name:
-    "permissionrepo. isGranted() on a non --allow-read flagged file return false",
+  name: "permissionrepo. isGranted() on a non --allow-read flagged file return false",
   fn: async () => {
     const p: boolean = await permissionRepo.isGranted(readPermissionDescriptor);
     assertEquals(
       p,
       false,
-      "isGranted() o a non --allow-read flagged file should return false",
+      "isGranted() o a non --allow-read flagged file should return false"
     );
   },
 });
