@@ -27,7 +27,7 @@ Deno.test({
     assertNotEquals(
       heroRepository.len(),
       0,
-      "len() must return a value greater than 0 after init"
+      "len() must return a value greater than 0 after init",
     );
   },
 });
@@ -45,7 +45,7 @@ Deno.test({
   fn: () => {
     assert(
       heroRepository.findAll().length > 1,
-      "repository doesn't seem to be initialized"
+      "repository doesn't seem to be initialized",
     );
   },
 });
@@ -60,7 +60,7 @@ Deno.test({
     assertNotEquals(
       heroRepository.len(),
       0,
-      "len() must return a value greater than 0 after init"
+      "len() must return a value greater than 0 after init",
     );
   },
 });
