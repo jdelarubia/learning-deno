@@ -1,1 +1,5 @@
+# development directories
 devdocs/
+
+# session and output files
+*.txt
