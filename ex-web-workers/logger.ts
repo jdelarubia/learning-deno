@@ -2,7 +2,7 @@
  * logger.ts
  */
 
-const fh: Deno.File = await Deno.open("./web-workers-example/session.txt", {
+const fh: Deno.File = await Deno.open("./ex-web-workers/session.txt", {
   create: true,
   write: true,
 });

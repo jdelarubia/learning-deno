@@ -24,7 +24,7 @@ function buildUp() {
     deno: {
       namespace: true,
     },
-    write: ["./web-workers-example/session.txt"],
+    write: ["./ex-web-workers/session.txt"],
   } as WorkerOptions;
 
   _WORKER = new Worker(path.href, options);
@@ -58,7 +58,7 @@ async function run() {
 
   const writePermission: _Descriptor = {
     name: "write",
-    path: "./web-workers-example/session.txt",
+    path: "./ex-web-workers/session.txt",
   };
 
   if (!(await permissionRepo.isGranted(writePermission))) {
