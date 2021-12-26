@@ -1,0 +1,3 @@
+{
+  "lib": ["deno.window", "deno.unstable", "deno.ns", "deno.worker"]
+}
