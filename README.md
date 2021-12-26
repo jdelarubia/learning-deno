@@ -16,6 +16,10 @@ Set of little tests with [Deno](https://deno.land/).
 ```bash
 # run main app file
 $ deno run --unstable app.ts
+
+# using a Deno configuration file 
+# (--unstable flag must still be provided)
+$ deno run --unstable --config ./deno.json app.ts
 ```
 
 ---
