@@ -63,8 +63,10 @@ async function sampleRevokePermission() {
  * Main functionality to run all our sample code.
  */
 async function run() {
+  console.log();
   console.log("**************************************************");
   console.log("Permissions API Demo");
+  console.log("**************************************************");
 
   await logCurrentPermissions();
   await sampleRequestPermission();

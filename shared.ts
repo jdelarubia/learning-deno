@@ -4,13 +4,13 @@
  */
 
 import {
+  demoHttpServer,
   demoPermissions,
+  demoSampleWorkers,
+  demoStorage,
   demoUnixCat,
   demoWebPlatform,
-  demoHttpServer,
-  demoStorage,
   demoWorkers,
-  demoSampleWorkers,
 } from "./deps.ts";
 
 type _DemoDescriptor = {
