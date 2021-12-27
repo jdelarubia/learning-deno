@@ -9,7 +9,7 @@ Set of little tests with [Deno](https://deno.land/).
 - 3.5 [HTTP Server API](./http-server-api/readme.md)
 - 3.7 [Web Storage API](./web-storage-api/readme.md)
 - 3.8 [Workers](./web-worker-api/readme.md)
-- 3.8 ex [Web Workers example](./web-workers-example/readme.md)
+- 3.8 ex [Web Workers example](./ex-web-workers/readme.md)
 
 ## Running the examples
 
