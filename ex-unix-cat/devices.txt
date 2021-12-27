@@ -1,0 +1,6 @@
+cellphone
+landphone
+tablet
+computer
+washing machine
+teapot
