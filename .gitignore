@@ -3,3 +3,4 @@ devdocs/
 
 # session and output files
 *.txt
+!ex-unix-cat/*.txt
