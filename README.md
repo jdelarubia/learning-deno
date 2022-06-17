@@ -28,6 +28,7 @@ $ deno run --unstable --config ./deno.json app.ts
 ## Resources
 
 - [DENO Testing](https://deno.land/manual@main/testing)
+- [DENO config file options](https://deno.land/manual/getting_started/configuration_file)
 - [How to write tests in Deno](https://dev.to/robdwaller/how-to-write-tests-in-deno-pen)
 - [Singleton in typeScript](https://refactoring.guru/design-patterns/singleton/typescript/example)
 - [Deno's built-in errors](https://medium.com/deno-the-complete-reference/denos-built-in-errors-e8de397c45b4)
