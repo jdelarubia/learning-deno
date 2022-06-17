@@ -3,7 +3,7 @@
  * Implementation of unix's cat utility.
  */
 
-import { copy } from "https://deno.land/std@0.119.0/streams/conversion.ts";
+import { copy } from 'https://deno.land/std@0.119.0/streams/conversion.ts';
 
 async function run() {
   for (const filename of Deno.args) {

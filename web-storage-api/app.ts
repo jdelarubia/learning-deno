@@ -3,16 +3,16 @@
  * Test basic functionality of localStorage.
  */
 
-import { heroRepository as repo } from "./heroRepository.ts";
-import { fakeDB } from "../tests/web-storage-api/mocks.ts";
+import { heroRepository as repo } from './heroRepository.ts';
+import { fakeDB } from '../tests/web-storage-api/mocks.ts';
 
 function initDB() {
-  console.log("Initializing our repository");
+  console.log('Initializing our repository');
   fakeDB.forEach((hero) => repo.add(hero));
 } //.
 
 function printAllHeroes() {
-  console.log("All our heroes/villains");
+  console.log('All our heroes/villains');
   const all = repo.findAll();
   for (const hero in all) {
     console.log(all[hero]);
@@ -21,13 +21,15 @@ function printAllHeroes() {
 } //.
 
 function clearDB() {
-  console.log("Clearing our our repository");
+  console.log('Clearing our our repository');
   repo.clear();
 } //.
 
 function removeCouchPotato() {
-  console.log("We detected an outlier. Removing Mr.'Couch Potato' from our DB");
-  repo.remove("couch potato");
+  console.log(
+    'We detected an outlier. Removing Mr.\'Couch Potato\' from our DB',
+  );
+  repo.remove('couch potato');
 } //.
 
 function removeHero(key: string) {
@@ -37,11 +39,11 @@ function removeHero(key: string) {
 
 function run() {
   console.log();
-  console.log("localStorage Demo");
+  console.log('localStorage Demo');
   initDB();
   printAllHeroes();
   removeCouchPotato();
-  removeHero("Godzilla");
+  removeHero('Godzilla');
   printAllHeroes();
   clearDB();
   console.log();

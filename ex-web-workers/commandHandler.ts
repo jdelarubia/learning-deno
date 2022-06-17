@@ -3,9 +3,9 @@
  * Handles the user input to run actions on the repository.
  */
 
-import { productRepo } from "./repo.ts";
-import { _Product, _Specs } from "./shared.ts";
-import { fakeDB } from "../tests/web-workers-example/mocks.ts";
+import { productRepo } from './repo.ts';
+import { _Product, _Specs } from './shared.ts';
+import { fakeDB } from '../tests/web-workers-example/mocks.ts';
 
 class CommandHandler {
   public exit = false;
@@ -13,7 +13,7 @@ class CommandHandler {
 
   initWorker(worker: Worker) {
     this.logger = worker;
-    this.logger.dispatchEvent(new Event("createWorker"));
+    this.logger.dispatchEvent(new Event('createWorker'));
   } //.
 
   add(args: string) {
@@ -23,8 +23,8 @@ class CommandHandler {
 
   bye() {
     this.exit = true;
-    this.log("bye");
-    this.logger!.dispatchEvent(new Event("closeWorker"));
+    this.log('bye');
+    this.logger!.dispatchEvent(new Event('closeWorker'));
   } //.
 
   clear() {
@@ -44,14 +44,14 @@ class CommandHandler {
   } //.
 
   list() {
-    console.log("LIST OF ELEMENTS");
+    console.log('LIST OF ELEMENTS');
     const all: _Product[] = productRepo.findAll();
 
     for (const elem in all) {
       const { id, specs } = all[elem];
       console.log(`${id}:`, specs);
     }
-    this.log("list");
+    this.log('list');
   } //.
 
   filter(criteria: string[]) {
@@ -78,37 +78,37 @@ class CommandHandler {
 
   handle(command: string, args: string[]) {
     switch (command.trim().toLowerCase()) {
-      case "add":
-        this.add(args.join(" "));
+      case 'add':
+        this.add(args.join(' '));
         break;
-      case "del":
-      case "remove":
-        this.del(args.join(""));
+      case 'del':
+      case 'remove':
+        this.del(args.join(''));
         break;
-      case "bye":
-      case "exit":
+      case 'bye':
+      case 'exit':
         this.bye();
         break;
-      case "clear":
+      case 'clear':
         this.clear();
         break;
-      case "help":
+      case 'help':
         console.log(this.help());
         break;
-      case "init":
+      case 'init':
         this.init();
         break;
-      case "len":
+      case 'len':
         this.len();
         break;
-      case "list":
+      case 'list':
         this.list();
         break;
-      case "filter":
+      case 'filter':
         this.filter(args);
         break;
-      case "find":
-        this.find(args.join(""));
+      case 'find':
+        this.find(args.join(''));
         break;
       default:
         console.log(`${command} command not implemented`);
@@ -116,7 +116,7 @@ class CommandHandler {
   } //.
 
   help(): string {
-    this.log("help");
+    this.log('help');
     return `Commands available
 --------------------------------------------------
 ADD {"propA": "item"}  Add item to the DB
@@ -137,7 +137,7 @@ LIST                   Lists all the records in our DB
 
   init() {
     fakeDB.forEach((elem) => productRepo.add(elem));
-    this.log("init");
+    this.log('init');
   } //.
 
   /**

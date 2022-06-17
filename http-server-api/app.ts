@@ -1,12 +1,12 @@
-import { _Descriptor, permissionRepo } from "../shared/PermissionRepository.ts";
+import { _Descriptor, permissionRepo } from '../shared/PermissionRepository.ts';
 
 // Settings
 const PORT = 8080;
-const HOST = "127.0.0.1";
+const HOST = '127.0.0.1';
 
 async function requestNetAccess(): Promise<boolean> {
   const descriptor: _Descriptor = {
-    name: "net",
+    name: 'net',
     host: `${HOST}:${PORT}`,
   } as const;
 
@@ -16,8 +16,8 @@ async function requestNetAccess(): Promise<boolean> {
 // Info about HTTP Requests and Responses
 // https://deno.land/manual@v1.16.3/runtime/http_server_apis
 async function run() {
-  console.log("**************************************************");
-  console.log("HTTP Server API Demo");
+  console.log('**************************************************');
+  console.log('HTTP Server API Demo');
   console.log(
     `If you grant NET permissions, the server will listen on http://${HOST}:${PORT}`,
   );

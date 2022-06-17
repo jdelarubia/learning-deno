@@ -4,13 +4,13 @@
  */
 
 console.log();
-console.log("hello worker!");
+console.log('hello worker!');
 
-self.addEventListener("message", async (ev: Event) => {
+self.addEventListener('message', async (ev: Event) => {
   const { filename } = (ev as any).data;
-  console.log("file:", filename);
+  console.log('file:', filename);
   const text = await Deno.readTextFile(filename);
-  console.log("content of the file:");
+  console.log('content of the file:');
   console.log(text);
   self.close();
 });

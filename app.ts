@@ -3,11 +3,11 @@
  * Main application.
  */
 
-import { permissionRepo } from "./deps.ts";
-import { DemosDetails } from "./shared.ts";
+import { permissionRepo } from './deps.ts';
+import { DemosDetails } from './shared.ts';
 
 async function runDemos() {
-  console.log("Please, enable permissions so the demo app works");
+  console.log('Please, enable permissions so the demo app works');
   await Deno.args.forEach((argument) => {
     const demo = DemosDetails[argument];
     if (demo) {
@@ -21,10 +21,10 @@ async function runDemos() {
 } //.
 
 function showDemosAvailable() {
-  console.log("Demos available:");
+  console.log('Demos available:');
   for (const descriptor in DemosDetails) {
     const { description } = DemosDetails[descriptor];
-    console.log(descriptor, ":", description);
+    console.log(descriptor, ':', description);
   }
 } //.
 
@@ -41,7 +41,7 @@ async function main() {
   if (Deno.args.length > 0) {
     await runDemos();
   } else {
-    console.log("No arguments were given. Exit!");
+    console.log('No arguments were given. Exit!');
   }
 
   // if (Object.keys(Deno.args).length > 0) {

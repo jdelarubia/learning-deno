@@ -13,7 +13,7 @@ export type _Product = {
 };
 
 const isBoolean = (val: string | boolean): boolean => {
-  return typeof val === "boolean";
+  return typeof val === 'boolean';
 }; //.
 
 export { isBoolean };

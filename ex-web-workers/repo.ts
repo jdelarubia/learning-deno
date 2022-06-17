@@ -3,7 +3,7 @@
  * LocalStorage-based repository class.
  */
 
-import { _Product, _RepoIndex, _Specs } from "./shared.ts";
+import { _Product, _RepoIndex, _Specs } from './shared.ts';
 
 class ProductRepo {
   private currentId = 0;
