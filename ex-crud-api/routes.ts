@@ -3,11 +3,16 @@
  * Define all the endpoints of our API.
  */
 
-import { Router, Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
-import { findAll } from './controllers/products.ts';
+import { Router } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
+import { all, one, remove, update, add } from './controllers/products.ts';
 
-const router = new Router();
+const productsRouter = new Router();
 
-router.get('/api/v1/products', findAll);
+productsRouter
+  .get('/api/v1/products', all)
+  .get('/api/v1/products/:id', one)
+  .post('/api/v1/products', add)
+  .put('/api/v1/products/:id', update)
+  .delete('/api/v1/products/:id', remove);
 
-export default router;
+export default productsRouter;
