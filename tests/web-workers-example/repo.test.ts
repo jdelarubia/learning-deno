@@ -9,12 +9,8 @@ import {
   assertExists,
   assertNotEquals,
 } from '../deps.ts';
-import { productRepo } from '../../web-workers-example/repo.ts';
-import {
-  _Product,
-  _RepoIndex,
-  _Specs,
-} from '../../web-workers-example/shared.ts';
+import { productRepo } from '../../ex-web-workers/repo.ts';
+import { _Product, _RepoIndex, _Specs } from '../../ex-web-workers/shared.ts';
 import { fakeDB } from './mocks.ts';
 
 Deno.test({
@@ -32,7 +28,7 @@ Deno.test({
     assertNotEquals(
       productRepo.len(),
       0,
-      'len() must return a value greater than 0 after init',
+      'len() must return a value greater than 0 after init'
     );
   },
 });
@@ -50,7 +46,7 @@ Deno.test({
   fn: () => {
     assert(
       productRepo.findAll().length > 1,
-      'repository doesn\'t seem to be initialized',
+      "repository doesn't seem to be initialized"
     );
   },
 });
@@ -60,7 +56,7 @@ Deno.test({
   fn: () => {
     assert(
       productRepo.findBy('category', 'TV').length > 1,
-      'repository doesn\'t seem to be initialized',
+      "repository doesn't seem to be initialized"
     );
   },
 });
@@ -70,7 +66,7 @@ Deno.test({
   fn: () => {
     assert(
       productRepo.findBy('something', 'random').length === 0,
-      'non existing filter',
+      'non existing filter'
     );
   },
 });
@@ -84,7 +80,7 @@ Deno.test({
     assertNotEquals(
       productRepo.len(),
       0,
-      'len() must return a value greater than 0 after init',
+      'len() must return a value greater than 0 after init'
     );
   },
 });
@@ -95,7 +91,7 @@ Deno.test({
     const initLen: number = productRepo.len();
     productRepo.remove(2);
     const finalLen: number = productRepo.len();
-    assert(finalLen < initLen, 'remove() doesn\'t seem to subtract repo len');
+    assert(finalLen < initLen, "remove() doesn't seem to subtract repo len");
   },
 });
 
