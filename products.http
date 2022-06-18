@@ -27,6 +27,11 @@ content-type: {{contentType}}
 POST http://{{host}}/api/{{apiVersion}}/products/ HTTP/1.1
 content-type: {{contentType}}
 
+{
+  "name": "RANDOM Product",
+  "price": "99.99"
+}
+
 ### Update a product in our databse
 PUT http://{{host}}/api/{{apiVersion}}/products/{{id}} HTTP/1.1
 content-type: {{contentType}}
