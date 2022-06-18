@@ -4,6 +4,7 @@
  */
 
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
+import { v4 } from 'https://deno.land/std/uuid/mod.ts';
 
 import { products } from './data.ts';
 import { Product, ContextWithParams } from '../types.ts';
@@ -49,10 +50,26 @@ const one = (context: ContextWithParams) => {
  * @desc  Add a product
  * @route POST /api/v1/products
  */
-const add = (context: Context) => {
+const add = async (context: Context) => {
+  const body = await context.request.body();
+  console.log('body', await body);
+  console.log('');
+  if (!context.request.hasBody || Object.entries(body).length === 0) {
+    context.response.status = 400;
+    context.response.body = {
+      success: false,
+      message: 'missing data',
+    };
+    return;
+  }
+  const newProduct: Product = await body.value;
+  newProduct.id = v4.generate();
+  products.push(newProduct);
+
+  context.response.status = 201;
   context.response.body = {
     success: true,
-    message: 'added product',
+    data: newProduct,
   };
 };
 
