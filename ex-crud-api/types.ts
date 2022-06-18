@@ -1,3 +1,8 @@
+/**
+ * types.ts
+ * Helper types
+ */
+
 type Product = {
   id: string;
   name: string;
