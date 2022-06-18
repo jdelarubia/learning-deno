@@ -14,18 +14,19 @@ import {
   demoCrudApi,
 } from './deps.ts';
 
-type _DemoDescriptor = {
+type DemoDescriptor = {
   fn: CallableFunction;
   description: string;
   permissions: Deno.PermissionDescriptor[];
 };
+type DemoList = { [index: string]: DemoDescriptor };
 
-const permitDescriptor: _DemoDescriptor = {
+const permitDescriptor: DemoDescriptor = {
   fn: demoPermissions,
   description: 'Demo Deno Permissions API',
   permissions: [],
 };
-const catDescriptor: _DemoDescriptor = {
+const catDescriptor: DemoDescriptor = {
   fn: demoUnixCat,
   description: 'Demo Deno Permissions API',
   permissions: [
@@ -33,13 +34,13 @@ const catDescriptor: _DemoDescriptor = {
     { name: 'read', path: './ex-unix-cat/devices.txt' },
   ],
 };
-const webDescriptor: _DemoDescriptor = {
+const webDescriptor: DemoDescriptor = {
   fn: demoWebPlatform,
   description: 'Demo Deno Web Platform API',
   permissions: [{ name: 'read', path: './web-platform-api/albums.json' }],
 };
 
-const httpDescriptor: _DemoDescriptor = {
+const httpDescriptor: DemoDescriptor = {
   fn: demoHttpServer,
   description: 'Demo HTTP server API (blocks the process)',
   permissions: [
@@ -47,12 +48,12 @@ const httpDescriptor: _DemoDescriptor = {
     { name: 'net', host: 'localhost:8080' },
   ],
 };
-const storageDescriptor: _DemoDescriptor = {
+const storageDescriptor: DemoDescriptor = {
   fn: demoStorage,
   description: 'Demo Deno Local Storage API',
   permissions: [],
 };
-const workerDescriptor: _DemoDescriptor = {
+const workerDescriptor: DemoDescriptor = {
   fn: demoWorkers,
   description: 'Demo Deno Worker API',
   permissions: [
@@ -60,7 +61,7 @@ const workerDescriptor: _DemoDescriptor = {
     { name: 'read', path: './web-worker-api/log.txt' },
   ],
 };
-const exworkerDescriptor: _DemoDescriptor = {
+const exworkerDescriptor: DemoDescriptor = {
   fn: demoSampleWorkers,
   description: 'Demo app of Worker + Local Storage + Permissions',
   permissions: [
@@ -77,7 +78,7 @@ const excrudapi: DemoDescriptor = {
   ],
 };
 
-export const DemosDetails: { [index: string]: _DemoDescriptor } = {
+export const DemosDetails: DemoList = {
   permit: permitDescriptor,
   http: httpDescriptor,
   web: webDescriptor,
