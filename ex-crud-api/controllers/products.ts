@@ -20,6 +20,32 @@ const all = (context: Context) => {
 };
 
 /**
+ * @desc  Get a product
+ * @route GET /api/v1/products/:id
+ */
+const one = (context: ContextWithParams) => {
+  const { id } = context.params;
+  const one: Product | undefined = products.find(
+    (product) => product.id === id
+  );
+  if (one) {
+    context.response.status = 200;
+    context.response.body = {
+      success: true,
+      message: 'One retrieved ',
+      id: id,
+      data: one,
+    };
+    return;
+  }
+  context.response.status = 404;
+  context.response.body = {
+    success: false,
+    message: `id ${id} not found`,
+  };
+};
+
+/**
  * @desc  Add a product
  * @route POST /api/v1/products
  */
@@ -51,3 +77,5 @@ const remove = (context: Context) => {
     message: 'deleted product',
   };
 };
+
+export { all, one, add, update, remove };
