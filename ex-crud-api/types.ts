@@ -3,6 +3,8 @@
  * Helper types
  */
 
+import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
+
 type Product = {
   id: string;
   name: string;
@@ -10,4 +12,6 @@ type Product = {
   price: number;
 };
 
-export type { Product };
+type ContextWithParams = Context & { params: { [index: string]: unknown } };
+
+export type { Product, ContextWithParams };
