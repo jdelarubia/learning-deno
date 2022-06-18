@@ -1,0 +1,37 @@
+@hostname = 127.0.0.1
+@port = 8080
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@apiVersion = v1
+
+###
+### products
+###
+
+### Get all products
+GET http://{{host}}/api/{{apiVersion}}/products HTTP/1.1
+content-type: {{contentType}}
+
+### Get a single product given its id
+@id = 2
+
+GET http://{{host}}/api/{{apiVersion}}/products/{{id}} HTTP/1.1
+content-type: {{contentType}}
+
+### Try to find a non existing product id
+GET http://{{host}}/api/{{apiVersion}}/products/1000 HTTP/1.1
+content-type: {{contentType}}
+
+
+### Add a product to our database
+POST http://{{host}}/api/{{apiVersion}}/products/ HTTP/1.1
+content-type: {{contentType}}
+
+### Update a product in our databse
+PUT http://{{host}}/api/{{apiVersion}}/products/{{id}} HTTP/1.1
+content-type: {{contentType}}
+
+### Delete a product from our database
+DELETE  http://{{host}}/api/{{apiVersion}}/products/{{id}} HTTP/1.1
+content-type: {{contentType}}
+
