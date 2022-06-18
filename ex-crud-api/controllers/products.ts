@@ -12,7 +12,7 @@ import { Product, ContextWithParams } from '../types.ts';
  * @desc  Get all products
  * @route GET /api/v1/products
  */
-const findAll = (context: Context) => {
+const all = (context: Context) => {
   context.response.body = {
     success: true,
     data: products,
