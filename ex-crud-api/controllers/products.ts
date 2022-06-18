@@ -19,4 +19,35 @@ const all = (context: Context) => {
   };
 };
 
-export { findAll };
+/**
+ * @desc  Add a product
+ * @route POST /api/v1/products
+ */
+const add = (context: Context) => {
+  context.response.body = {
+    success: true,
+    message: 'added product',
+  };
+};
+
+/**
+ * @desc  Update product
+ * @route PUT /api/v1/products/:id
+ */
+const update = (context: Context) => {
+  context.response.body = {
+    success: true,
+    message: 'updated product',
+  };
+};
+
+/**
+ * @desc  Delete a product
+ * @route DELETE /api/v1/products/:id
+ */
+const remove = (context: Context) => {
+  context.response.body = {
+    success: true,
+    message: 'deleted product',
+  };
+};
