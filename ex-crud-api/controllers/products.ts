@@ -6,6 +6,7 @@
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
 
 import { products } from './data.ts';
+import { Product, ContextWithParams } from '../types.ts';
 
 /**
  * @desc  Get all products
