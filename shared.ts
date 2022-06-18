@@ -11,6 +11,7 @@ import {
   demoUnixCat,
   demoWebPlatform,
   demoWorkers,
+  demoCrudApi,
 } from './deps.ts';
 
 type _DemoDescriptor = {
@@ -67,6 +68,14 @@ const exworkerDescriptor: _DemoDescriptor = {
     { name: 'write', path: './ex-web-workers/session.txt' },
   ],
 };
+const excrudapi: DemoDescriptor = {
+  fn: demoCrudApi,
+  description: 'Traversy Media Example of CRUD API',
+  permissions: [
+    { name: 'net', host: '127.0.0.1:8080' },
+    { name: 'net', host: 'localhost:8080' },
+  ],
+};
 
 export const DemosDetails: { [index: string]: _DemoDescriptor } = {
   permit: permitDescriptor,
@@ -76,4 +85,5 @@ export const DemosDetails: { [index: string]: _DemoDescriptor } = {
   workers: workerDescriptor,
   storage: storageDescriptor,
   exworker: exworkerDescriptor,
+  excrudapi: excrudapi,
 };

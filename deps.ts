@@ -6,3 +6,4 @@ export { demoStorage } from './web-storage-api/app.ts';
 export { demoWorkers } from './web-worker-api/app.ts';
 export { demoSampleWorkers } from './ex-web-workers/app.ts';
 export { demoUnixCat } from './ex-unix-cat/app.ts';
+export { demoCrudApi } from './ex-crud-api/app.ts';

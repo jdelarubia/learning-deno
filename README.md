@@ -11,6 +11,7 @@ Set of little tests with [Deno](https://deno.land/).
 - 3.8 [Workers](./web-worker-api/readme.md)
 - 3.8 ex [Web Workers example](./ex-web-workers/readme.md)
 - 10.6 ex [Unix's cat utility](./ex-unix-cat/readme.md)
+- ex [CRUD API](./ex-crud-api/readme.md) from Traversy Media tutorial
 
 ## Running the examples
 
