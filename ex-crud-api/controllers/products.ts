@@ -5,7 +5,7 @@
 
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
 
-import { fakeDB } from './db.ts';
+import { productsRepo } from './db.ts';
 import { Product, OptionalProduct, ContextWithParams } from '../types.ts';
 
 /**
@@ -15,7 +15,7 @@ import { Product, OptionalProduct, ContextWithParams } from '../types.ts';
 const all = (context: Context) => {
   context.response.body = {
     success: true,
-    data: fakeDB.all(),
+    data: productsRepo.findAll(),
   };
 };
 
@@ -25,7 +25,7 @@ const all = (context: Context) => {
  */
 const one = (context: ContextWithParams) => {
   const { id } = context.params;
-  const one: OptionalProduct | undefined = fakeDB.one(id as string);
+  const one: OptionalProduct | undefined = productsRepo.find(id as string);
   if (one) {
     context.response.status = 200;
     context.response.body = {
@@ -59,7 +59,7 @@ const add = async (context: Context) => {
     return;
   }
   const newProduct: OptionalProduct = await body.value;
-  fakeDB.add(newProduct);
+  productsRepo.add(newProduct);
 
   context.response.status = 201;
   context.response.body = {
@@ -73,8 +73,8 @@ const add = async (context: Context) => {
  * @route PUT /api/v1/products/:id
  */
 const update = async (context: Context) => {
-  const { params, request, response } = context as any;
-  const product: OptionalProduct | undefined = fakeDB.one(params.id);
+  const { params, request } = context as any;
+  const product: OptionalProduct | undefined = productsRepo.find(params.id);
   console.log('product found', product);
 
   if (product) {
@@ -82,7 +82,7 @@ const update = async (context: Context) => {
     const updatedData: OptionalProduct = await body.value;
     updatedData.id = params.id;
     console.log('updating product 2:', updatedData);
-    fakeDB.update(updatedData);
+    productsRepo.update(updatedData);
 
     context.response.status = 200;
     context.response.body = {
@@ -104,9 +104,13 @@ const update = async (context: Context) => {
  * @route DELETE /api/v1/products/:id
  */
 const remove = (context: Context) => {
+  const { params } = context as any;
+
+  productsRepo.remove(params.id);
+
   context.response.body = {
     success: true,
-    message: 'deleted product',
+    message: `product id ${params.id} removed`,
   };
 };
 
