@@ -29,6 +29,7 @@ content-type: {{contentType}}
 
 {
   "name": "RANDOM Product",
+  "description": "some random product for our catalogue",
   "price": "99.99"
 }
 
