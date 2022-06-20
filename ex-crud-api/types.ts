@@ -20,4 +20,4 @@ type OptionalProduct = {
 
 type ContextWithParams = Context & { params: { [index: string]: unknown } };
 
-export type { Product, OptionalProduct, ContextWithParams };
+export type { ContextWithParams, OptionalProduct, Product };

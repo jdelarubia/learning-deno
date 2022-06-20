@@ -4,6 +4,7 @@
  */
 
 import {
+  demoCrudApi,
   demoHttpServer,
   demoPermissions,
   demoSampleWorkers,
@@ -11,7 +12,6 @@ import {
   demoUnixCat,
   demoWebPlatform,
   demoWorkers,
-  demoCrudApi,
 } from './deps.ts';
 
 type DemoDescriptor = {

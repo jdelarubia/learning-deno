@@ -6,7 +6,7 @@
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
 
 import { productsRepo } from './db.ts';
-import { Product, OptionalProduct, ContextWithParams } from '../types.ts';
+import { ContextWithParams, OptionalProduct, Product } from '../types.ts';
 
 /**
  * @desc  Get all products
@@ -114,4 +114,4 @@ const remove = (context: Context) => {
   };
 };
 
-export { all, one, add, update, remove };
+export { add, all, one, remove, update };

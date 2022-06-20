@@ -1,4 +1,4 @@
-import { Product, OptionalProduct } from '../types.ts';
+import { OptionalProduct, Product } from '../types.ts';
 import { v4 } from 'https://deno.land/std/uuid/mod.ts';
 import { products } from './mocks.ts';
 
@@ -15,7 +15,7 @@ class ProductsRepo {
 
   find(id: string): OptionalProduct | undefined {
     const one: OptionalProduct | undefined = this.data.find(
-      (product) => product.id === id
+      (product) => product.id === id,
     );
     return one;
   }
@@ -28,7 +28,7 @@ class ProductsRepo {
   }
 
   update(updatedProduct: OptionalProduct) {
-    this.data = <any>(
+    this.data = <any> (
       this.data.map((p) =>
         p.id === updatedProduct.id ? { ...p, ...updatedProduct } : p
       )

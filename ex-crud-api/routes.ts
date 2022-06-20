@@ -4,7 +4,7 @@
  */
 
 import { Router } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
-import { all, one, remove, update, add } from './controllers/products.ts';
+import { add, all, one, remove, update } from './controllers/products.ts';
 
 const productsRouter = new Router();
 
