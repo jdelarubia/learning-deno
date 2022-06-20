@@ -35,6 +35,8 @@ class ProductsRepo {
     );
   }
 
+  remove(id: string) {
+    this.data = this.data.filter((p) => p.id !== id);
   }
 
   len(): number {
