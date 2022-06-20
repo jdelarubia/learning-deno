@@ -10,10 +10,10 @@ import {
   assertNotEquals,
 } from '../deps.ts';
 import { productsRepo } from '../../ex-crud-api/controllers/db.ts';
-import { OptionalProduct } from '../../ex-crud-api/types.ts';
+import { Product } from '../../ex-crud-api/types.ts';
 
 Deno.test({
-  name: 'productRepo. accessing a non existing product return undefined',
+  name: 'productRepo. accessing a non existing product gets undefined',
   fn: () => {
     assertEquals(productsRepo.find('100'), undefined);
   },
@@ -30,6 +30,7 @@ Deno.test({
   name: 'productRepo. all() return an array of Products and initial names match',
   fn: () => {
     const allProducts = productsRepo.findAll();
+
     assertEquals(allProducts.length, 3);
     assertEquals(allProducts[0].name, 'Product One');
     assertEquals(allProducts[1].name, 'Product Two');
@@ -51,12 +52,13 @@ Deno.test({
 Deno.test({
   name: 'productRepo. add() alter the DB length and name matches',
   fn: () => {
-    const exampleProduct: OptionalProduct = {
+    const exampleProduct: Product = {
       name: 'Product Four',
       description: 'Fourth product in our catalogue',
       price: 75.55,
     };
     const newId = productsRepo.add(exampleProduct);
+
     assertEquals(productsRepo.len(), 4);
     assertEquals(productsRepo.find(newId)?.name, 'Product Four');
   },
@@ -66,14 +68,15 @@ Deno.test({
   name: 'productRepo. update() change the name of product',
   fn: () => {
     const initialName: string | undefined = productsRepo.find('2')?.name;
-    const exampleProduct: OptionalProduct = {
+    const updateProduct: Product = {
+      id: '2',
       name: 'Updated Product TWO',
       description: 'Fourth product in our catalogue',
       price: 75.55,
     };
-    productsRepo.update(exampleProduct);
+    productsRepo.update(updateProduct);
     const updatedName: string | undefined = productsRepo.find('2')?.name;
-    console.log('names:', initialName, updatedName);
+
     assertEquals(productsRepo.len(), 4);
     assertNotEquals(initialName, updatedName);
   },
@@ -83,6 +86,7 @@ Deno.test({
   name: 'productRepo. remove() change DB length',
   fn: () => {
     productsRepo.remove('2');
+
     assertEquals(productsRepo.len(), 3);
   },
 });
