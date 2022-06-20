@@ -1,34 +1,34 @@
-import { OptionalProduct, Product } from '../types.ts';
+import { Product } from '../types.ts';
 import { v4 } from 'https://deno.land/std/uuid/mod.ts';
 import { products } from './mocks.ts';
 
 class ProductsRepo {
-  data: OptionalProduct[];
+  data: Product[];
 
-  constructor(productData: OptionalProduct[]) {
+  constructor(productData: Product[]) {
     this.data = productData;
   }
 
-  findAll(): OptionalProduct[] {
+  findAll(): Product[] {
     return this.data;
   }
 
-  find(id: string): OptionalProduct | undefined {
-    const one: OptionalProduct | undefined = this.data.find(
-      (product) => product.id === id,
+  find(id: string): Product | undefined {
+    const one: Product | undefined = this.data.find(
+      (product) => product.id === id
     );
     return one;
   }
 
-  add(product: OptionalProduct): string {
-    const newProduct: OptionalProduct = product;
+  add(product: Product): string {
+    const newProduct: Product = { ...product };
     newProduct.id = v4.generate();
     this.data.push(newProduct);
     return newProduct.id;
   }
 
-  update(updatedProduct: OptionalProduct) {
-    this.data = <any> (
+  update(updatedProduct: Product) {
+    this.data = <any>(
       this.data.map((p) =>
         p.id === updatedProduct.id ? { ...p, ...updatedProduct } : p
       )

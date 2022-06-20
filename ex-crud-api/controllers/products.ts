@@ -6,7 +6,7 @@
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
 
 import { productsRepo } from './db.ts';
-import { ContextWithParams, OptionalProduct, Product } from '../types.ts';
+import { ContextWithParams, Product } from '../types.ts';
 
 /**
  * @desc  Get all products
@@ -25,7 +25,7 @@ const all = (context: Context) => {
  */
 const one = (context: ContextWithParams) => {
   const { id } = context.params;
-  const one: OptionalProduct | undefined = productsRepo.find(id as string);
+  const one: Product | undefined = productsRepo.find(id as string);
   if (one) {
     context.response.status = 200;
     context.response.body = {
@@ -58,7 +58,7 @@ const add = async (context: Context) => {
     };
     return;
   }
-  const newProduct: OptionalProduct = await body.value;
+  const newProduct: Product = await body.value;
   productsRepo.add(newProduct);
 
   context.response.status = 201;
@@ -74,12 +74,12 @@ const add = async (context: Context) => {
  */
 const update = async (context: Context) => {
   const { params, request } = context as any;
-  const product: OptionalProduct | undefined = productsRepo.find(params.id);
+  const product: Product | undefined = productsRepo.find(params.id);
   console.log('product found', product);
 
   if (product) {
     const body = await request.body();
-    const updatedData: OptionalProduct = await body.value;
+    const updatedData: Product = await body.value;
     updatedData.id = params.id;
     console.log('updating product 2:', updatedData);
     productsRepo.update(updatedData);
