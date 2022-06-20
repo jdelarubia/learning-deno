@@ -6,12 +6,6 @@
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
 
 type Product = {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-};
-type OptionalProduct = {
   id?: string;
   name?: string;
   description?: string;
@@ -20,4 +14,4 @@ type OptionalProduct = {
 
 type ContextWithParams = Context & { params: { [index: string]: unknown } };
 
-export type { ContextWithParams, OptionalProduct, Product };
+export type { ContextWithParams, Product };
