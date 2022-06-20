@@ -28,10 +28,13 @@ class ProductsRepo {
   }
 
   update(updatedProduct: OptionalProduct) {
-    this.data.map((p) => {
-      p.id === updatedProduct.id ? { ...p, ...updatedProduct } : p;
-      console.log('updated product', p);
-    });
+    this.data = <any>(
+      this.data.map((p) =>
+        p.id === updatedProduct.id ? { ...p, ...updatedProduct } : p
+      )
+    );
+  }
+
   }
 
   len(): number {
