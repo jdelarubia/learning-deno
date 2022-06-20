@@ -2,18 +2,18 @@ import { Product, OptionalProduct } from '../types.ts';
 import { v4 } from 'https://deno.land/std/uuid/mod.ts';
 import { products } from './mocks.ts';
 
-class ProductsDB {
+class ProductsRepo {
   data: OptionalProduct[];
 
   constructor(productData: OptionalProduct[]) {
     this.data = productData;
   }
 
-  all(): OptionalProduct[] {
+  findAll(): OptionalProduct[] {
     return this.data;
   }
 
-  one(id: string): OptionalProduct | undefined {
+  find(id: string): OptionalProduct | undefined {
     const one: OptionalProduct | undefined = this.data.find(
       (product) => product.id === id
     );
@@ -39,4 +39,4 @@ class ProductsDB {
   }
 } //.ProductsDB
 
-export const fakeDB = new ProductsDB(products);
+export const productsRepo = new ProductsRepo(products);
