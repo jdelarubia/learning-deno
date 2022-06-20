@@ -4,10 +4,9 @@
  */
 
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
-import { v4 } from 'https://deno.land/std/uuid/mod.ts';
 
-import { products } from './data.ts';
-import { Product, ContextWithParams } from '../types.ts';
+import { fakeDB } from './db.ts';
+import { Product, OptionalProduct, ContextWithParams } from '../types.ts';
 
 /**
  * @desc  Get all products
@@ -16,7 +15,7 @@ import { Product, ContextWithParams } from '../types.ts';
 const all = (context: Context) => {
   context.response.body = {
     success: true,
-    data: products,
+    data: fakeDB.all(),
   };
 };
 
@@ -26,15 +25,12 @@ const all = (context: Context) => {
  */
 const one = (context: ContextWithParams) => {
   const { id } = context.params;
-  const one: Product | undefined = products.find(
-    (product) => product.id === id
-  );
+  const one: OptionalProduct | undefined = fakeDB.one(id as string);
   if (one) {
     context.response.status = 200;
     context.response.body = {
       success: true,
-      message: 'One retrieved ',
-      id: id,
+      message: 'product retrieved ',
       data: one,
     };
     return;
@@ -55,16 +51,15 @@ const add = async (context: Context) => {
   console.log('body', await body);
   console.log('');
   if (!context.request.hasBody || Object.entries(body).length === 0) {
-    context.response.status = 400;
+    context.response.status = 400; // bad request
     context.response.body = {
       success: false,
       message: 'missing data',
     };
     return;
   }
-  const newProduct: Product = await body.value;
-  newProduct.id = v4.generate();
-  products.push(newProduct);
+  const newProduct: OptionalProduct = await body.value;
+  fakeDB.add(newProduct);
 
   context.response.status = 201;
   context.response.body = {
@@ -77,10 +72,30 @@ const add = async (context: Context) => {
  * @desc  Update product
  * @route PUT /api/v1/products/:id
  */
-const update = (context: Context) => {
+const update = async (context: Context) => {
+  const { params, request, response } = context as any;
+  const product: OptionalProduct | undefined = fakeDB.one(params.id);
+  console.log('product found', product);
+
+  if (product) {
+    const body = await request.body();
+    const updatedData: OptionalProduct = await body.value;
+    updatedData.id = params.id;
+    console.log('updating product 2:', updatedData);
+    fakeDB.update(updatedData);
+
+    context.response.status = 200;
+    context.response.body = {
+      success: true,
+      message: 'updated product',
+      data: updatedData,
+    };
+    return;
+  }
+  context.response.status = 404;
   context.response.body = {
-    success: true,
-    message: 'updated product',
+    success: false,
+    message: `product ${params.id} not found`,
   };
 };
 
