@@ -46,7 +46,7 @@ async function main() {
     await runDemos();
   } else {
     showHelp();
-    console.log('No arguments were given. Exit!');
+    console.log('No arguments given.');
   }
 } //.
 
