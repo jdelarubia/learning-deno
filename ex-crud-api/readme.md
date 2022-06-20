@@ -7,5 +7,3 @@ Traversy Media Tutorials:
 - [Deno & PostgreSQL (II)](https://www.youtube.com/watch?v=KuaI6mphFNc)
 
 ## ISSUES
-
-min 47 aprox
