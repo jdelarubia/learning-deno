@@ -11,7 +11,13 @@ type Product = {
   description: string;
   price: number;
 };
+type OptionalProduct = {
+  id?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+};
 
 type ContextWithParams = Context & { params: { [index: string]: unknown } };
 
-export type { Product, ContextWithParams };
+export type { Product, OptionalProduct, ContextWithParams };
