@@ -36,6 +36,12 @@ content-type: {{contentType}}
 PUT http://{{host}}/api/{{apiVersion}}/products/{{id}} HTTP/1.1
 content-type: {{contentType}}
 
+{
+  "name": "Updated Product TWO",
+  "description": "awesome product TWO",
+  "price": 50
+}
+
 ### Delete a product from our database
 DELETE  http://{{host}}/api/{{apiVersion}}/products/{{id}} HTTP/1.1
 content-type: {{contentType}}
