@@ -4,9 +4,14 @@
  */
 
 import { Context } from 'https://deno.land/x/oak@v10.6.0/mod.ts';
+import { Client } from 'https://deno.land/x/postgres@v0.16.1/mod.ts';
 
 import { productsRepo } from './db.ts';
 import { ContextWithParams, Product } from '../types.ts';
+import { dbCreds } from '../config.ts';
+
+const client = new Client(dbCreds);
+await client.connect();
 
 /**
  * @desc  Get all products
