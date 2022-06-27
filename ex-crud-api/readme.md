@@ -14,4 +14,17 @@ Traversy Media Tutorials:
 
 Once installed docker, from the project's root directory run `docker compose up`. This will start to download and install the necessary images for both, postgres and PGAdmin.
 
+## Running the example
+
+```bash
+$ docker compose start
+# running on watch mode
+$ deno run --watch --allow-env --allow-net app.ts excrudapi
+
+# stop the servers
+$ docker compose stop
+```
+
+---
+
 ## ISSUES
