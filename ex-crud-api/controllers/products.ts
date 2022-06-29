@@ -17,11 +17,21 @@ await client.connect();
  * @desc  Get all products
  * @route GET /api/v1/products
  */
-const all = (context: Context) => {
-  context.response.body = {
-    success: true,
-    data: productsRepo.findAll(),
-  };
+const all = async (context: Context) => {
+  try {
+    const result = await client.queryObject({
+      text: `SELECT * from ${dbCreds.database};`,
+    });
+    context.response.body = {
+      success: true,
+      data: result.rows,
+    };
+  } catch (error) {
+    context.response.body = {
+      success: false,
+      message: error.toString(),
+    };
+  }
 };
 
 /**
