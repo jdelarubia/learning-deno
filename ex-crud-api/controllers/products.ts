@@ -10,6 +10,7 @@ import { productsRepo } from './db.ts';
 import { ContextWithParams, Product } from '../types.ts';
 import { dbCreds } from '../config.ts';
 
+// init db client
 const client = new Client(dbCreds);
 await client.connect();
 
