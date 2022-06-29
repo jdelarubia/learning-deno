@@ -63,14 +63,31 @@ const add = async (context: Context) => {
     };
     return;
   }
-  const newProduct: Product = await body.value;
-  productsRepo.add(newProduct);
-
-  context.response.status = 201;
-  context.response.body = {
-    success: true,
-    data: newProduct,
-  };
+  try {
+    const newProduct: Product = await body.value;
+    await client.connect();
+    const result = await client.queryObject({
+      args: {
+        name: newProduct?.name,
+        description: newProduct?.description,
+        price: newProduct?.price,
+      },
+      text: `INSERT INTO ${dbCreds.database} (name, description, price) VALUES($name, $description, $price);`,
+    });
+    context.response.status = 201;
+    context.response.body = {
+      success: true,
+      data: newProduct,
+    };
+  } catch (error) {
+    context.response.status = 500;
+    context.response.body = {
+      success: false,
+      message: error.toString(),
+    };
+  } finally {
+    await client.end();
+  }
 };
 
 /**
